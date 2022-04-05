@@ -29,7 +29,7 @@ public class PatientsMvcApplication {
             patientRepositorie.save(new Patient(null,"salah",new Date(),true,4));
 
             patientRepositorie.findAll().forEach(patient -> {
-                System.out.println(patient.getNom());
+               // System.out.println(patient.getNom());
                     }
             );
         };
