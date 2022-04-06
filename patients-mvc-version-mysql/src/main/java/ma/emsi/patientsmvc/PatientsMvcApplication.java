@@ -17,16 +17,16 @@ public class PatientsMvcApplication {
     }
 
 
-    @Bean
+    //@Bean
     CommandLineRunner commandeLineRunner(PatientRepositorie patientRepositorie){
         return args -> {
-            patientRepositorie.save(new Patient(null,"hassan",new Date(),false,50));
+            patientRepositorie.save(new Patient(null,"hassan",new Date(),false,100));
 
-            patientRepositorie.save(new Patient(null,"wiam",new Date(),false,12));
+            patientRepositorie.save(new Patient(null,"wiam",new Date(),false,200));
 
-            patientRepositorie.save(new Patient(null,"kawtar",new Date(),false,20));
+            patientRepositorie.save(new Patient(null,"kawtar",new Date(),false,150));
 
-            patientRepositorie.save(new Patient(null,"salah",new Date(),true,4));
+            patientRepositorie.save(new Patient(null,"salah",new Date(),true,300));
 
             patientRepositorie.findAll().forEach(patient -> {
                // System.out.println(patient.getNom());
