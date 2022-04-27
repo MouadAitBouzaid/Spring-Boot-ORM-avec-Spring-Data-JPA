@@ -19,12 +19,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         System.out.println(encodedPWD);
         auth.inMemoryAuthentication().withUser("user1").password(encodedPWD).roles("user");
         auth.inMemoryAuthentication().withUser("user2").password(passwordEncoder.encode("1234")).roles("user");
-        auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder.encode("admin")).roles("user","admin");
+        auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder.encode("admin")).roles("user","ADMIN");
     }
     @Override
     protected void configure(HttpSecurity http)throws Exception{
         http.formLogin();
+        http.authorizeRequests().antMatchers("/").permitAll();
+        http.authorizeRequests().antMatchers("/delete/**","/edit/**","/save/**","/formPatients/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/index/**").hasRole("user");
         http.authorizeRequests().anyRequest().authenticated();
+        http.exceptionHandling().accessDeniedPage("/403");
     }
     @Bean
     PasswordEncoder passwordEncoder(){
