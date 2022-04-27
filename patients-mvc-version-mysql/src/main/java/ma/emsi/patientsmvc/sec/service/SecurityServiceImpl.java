@@ -8,12 +8,14 @@ import ma.emsi.patientsmvc.sec.repositories.AppRoleRepository;
 import ma.emsi.patientsmvc.sec.repositories.AppUserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
 @Service
 @Slf4j
 @AllArgsConstructor
+@Transactional
 public class SecurityServiceImpl implements SecurityService {
     private AppUserRepository appUserRepository;
     private AppRoleRepository appRoleRepository;
@@ -35,11 +37,20 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public AppRole saveRole(String roleName, String description) {
-        return null;
+        AppRole appRole = appRoleRepository.findByRoleName(roleName);
+        if(appRole!=null) throw new RuntimeException("Role"+roleName+"Already exist");
+        appRole= new AppRole();
+        appRole.setRoleName(roleName);
+        appRole.setDescription(description);
+        AppRole savedAppRole =appRoleRepository.save(appRole);
+        return savedAppRole;
     }
-
+    @Transactional
     @Override
     public void addRoleToUser(String username, String roleName) {
+        AppUser appUser=appUserRepository.findByUserName(username);
+        AppRole appRole=appRoleRepository.findByRoleName(roleName);
+        appRole.getRoleId().add
 
     }
 
