@@ -19,8 +19,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private DataSource dataSource;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        /*
         PasswordEncoder passwordEncoder=passwordEncoder();
+        /*
+
         String encodedPWD=passwordEncoder.encode("1234");
         System.out.println(encodedPWD);
         auth.inMemoryAuthentication().withUser("user1").password(encodedPWD).roles("user");
@@ -30,7 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select username as principal, password as credentials, active from users where username=?")
-                .authoritiesByUsernameQuery("select username as principal, role as role from users_roles whre username=?")
+                .authoritiesByUsernameQuery("select username as principal, role as role from users_roles where username=?")
+                .rolePrefix("ROLE_")
+                .passwordEncoder(passwordEncoder);
     }
 
     @Override
