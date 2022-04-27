@@ -48,19 +48,24 @@ public class SecurityServiceImpl implements SecurityService {
     @Transactional
     @Override
     public void addRoleToUser(String username, String roleName) {
-        AppUser appUser=appUserRepository.findByUserName(username);
+        AppUser appUser=appUserRepository.findByUsername(username);
+        if(appUser!=null) throw new RuntimeException("User not found");
         AppRole appRole=appRoleRepository.findByRoleName(roleName);
-        appRole.getRoleId().add
-
+        if(appRole!=null) throw new RuntimeException("Role not found");
+        appUser.getAppRoles().add(appRole);
     }
 
     @Override
     public void removeRoleFromUser(String username, String roleName) {
-
+        AppUser appUser=appUserRepository.findByUsername(username);
+        if(appUser!=null) throw new RuntimeException("User not found");
+        AppRole appRole=appRoleRepository.findByRoleName(roleName);
+        if(appRole!=null) throw new RuntimeException("Role not found");
+        appUser.getAppRoles().remove(appRole);
     }
 
     @Override
     public AppUser loadUserByUserName(String username) {
-        return null;
+        return appUserRepository.findByUsername(username);
     }
 }
