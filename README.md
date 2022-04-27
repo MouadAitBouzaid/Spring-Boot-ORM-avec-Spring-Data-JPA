@@ -1,6 +1,5 @@
-# Spring-Boot-ORM-avec-Spring-Data-JPA
-<h2> Activité pratique N°3 JEE : Spring MVC, Thymeleaf, Spring Data et Spring Security
-</h1>
+# Activité pratique N°3 JEE : Spring MVC, Thymeleaf, Spring Data et Spring Security
+
 <h2 style="text-decoration: underline;">1- objectif:</h2>
 <div>
 <p>Développer une application web baseé sur Sprint MVC, ThymeLeaf et Spring Data qui permet de gérer des patients.</p>
