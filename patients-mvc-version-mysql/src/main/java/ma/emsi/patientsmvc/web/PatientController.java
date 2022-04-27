@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PatientController {
     private PatientRepositorie patientRepositorie;
-    @GetMapping (path = "/index")
+    @GetMapping (path = "/user/index")
     public String patient(Model model,
                           @RequestParam(name = "page",defaultValue = "0") int page,
                           @RequestParam(name = "size",defaultValue = "5") int size,
@@ -36,7 +36,7 @@ public class PatientController {
         return "patiens";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/admin/delete")
     public String delete(Long id,String keyword,int page) {
         patientRepositorie.deleteById(id);
         return "redirect:/index?page="+page+"&keyword="+keyword;
@@ -44,7 +44,6 @@ public class PatientController {
 
     @GetMapping("/")
     public String home() {
-
         return "home";
     }
 
