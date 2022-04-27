@@ -12,27 +12,27 @@
 <li>cree une page Template basée sur Thymeleaf Layout</li>
 </ul>
 </div>
-<h2 style="text-decoration: underline;">2- Architecture :</h2>
+<h2 style="text-decoration: underline;">2- Diagram de Class :</h2>
 <p><img src="images/diagrame de class.png"></p>
 <div>
-<h2 style="text-decoration: underline;">3- Travail a faire</h2>
+<h2 style="text-decoration: underline;">3- Travail à faire : </h2>
 
 <ol type="1">
 
-<dt><li> Cree un projet Spring Boot avec les dépendances </li></dt>
+<dt><li> Créer un projet Spring Boot avec les dépendances </li></dt>
 <dd>Spring DATA JPA , H2, Web ,themeleaf st Lombok </dd>
 <dt><li>Créer La couche DAO</li></dt>
 <dd>
 <ul>
 <li>Cree l'entite jpa Patient</li>
-<li> cree L'interface Patient Repository basée sur Spring DAta </li>
+<li>Créer L'interface Patient Repository basée sur Spring DAta </li>
 <li>Tester la couche Dao</li>
 </ul> 
 </dd>
 <dt><li>Créer la couche web </li></dt>
 <ul>
-<dd><li> Creer le controleur Spring MVC</li>
-<li>Cree les vue basee sur le moteur de Templates Thymeleafe </li>
+<dd><li> Créer le controleur Spring MVC</li>
+<li>Créer les vue basee sur le moteur de Templates Thymeleafe </li>
 </dd>
 </ul>
 </ol>
@@ -50,7 +50,7 @@ dans cette page en trouve la liste des patients avec pagination (Partie Admin)
 <h1>  Spring Security : Activité pratique N°4 ; Spring Boot Spring MVC Thymeleaf Spring Securiry User Details Service: </h1>
 <div>
 <div>
-            <h2 style="text-decoration: underline;">1- objectif:</h2>
+            <h2 style="text-decoration: underline;">1- objectif :</h2>
         <p>
             Sécuriser L'accés a l'Application 
             qui permet de géer les Patients en utilisant Spring Security . L'accées à L'aplication nécessite une Authentification avec
@@ -66,7 +66,7 @@ dans cette page en trouve la liste des patients avec pagination (Partie Admin)
 
 </div>
 <div>
-<h2 style="text-decoration: underline;">2- Travail a faire :</h2>
+<h2 style="text-decoration: underline;">2- Travail a faire : </h2>
 <p> </p>
 <ol type="1">
   <li>Ajouter la dépendance maven de Spring Security  </li>
@@ -86,7 +86,10 @@ dans cette page en trouve la liste des patients avec pagination (Partie Admin)
 <div>
 </div>
 <h2 style="text-decoration: underline;">3- Resultats :</h2>
-
+<div>
+</div>
+<div>
+</div>
 <p>
 <img src="images/Login.png">
 pour la page de login , on peut voir le formulaire de login avec les champs username et password
