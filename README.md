@@ -1,5 +1,5 @@
 # Spring-Boot-ORM-avec-Spring-Data-JPA
-<h1> Activité pratique N°3 JEE : Spring MVC, Thymeleaf, Spring Data et Spring Security
+<h2> Activité pratique N°3 JEE : Spring MVC, Thymeleaf, Spring Data et Spring Security
 </h1>
 <h2 style="text-decoration: underline;">1- objectif:</h2>
 <div>
@@ -40,8 +40,8 @@
 </div>
 <div>
 <h2 style="text-decoration: underline;">4- Resultats :</h2>
-<p><img src="images/Patients.png"></p>
-dans cette page en trouve la liste des patients avec pagination
+<p><img src="images/Home admin.png"></p>
+dans cette page en trouve la liste des patients avec pagination (Partie Admin)
 </div>
 <div>
 
@@ -63,12 +63,6 @@ dans cette page en trouve la liste des patients avec pagination
           <dt>Role_ADMIN</dt>
           <dd>- permettant d'ajouter, mettre àajour et supprimer les patients</dd>
         </dl>
-
-
-</div>
-<div>
- <h2 style="text-decoration: underline;">2- Architectur :</h2>
-    <img src="./images/architecteur.png"/>
 
 
 </div>
@@ -98,11 +92,19 @@ dans cette page en trouve la liste des patients avec pagination
 <img src="images/Login.png">
 pour la page de login , on peut voir le formulaire de login avec les champs username et password
 
-<img src="images/Patients.png">
+<img src="images/HomePage.png">
+<div>
+</div>
+<img src="images/InsertPage.png">
+<div>
+</div>
+<img src="images/EditPage.png">
+<div>
+</div>
 aprés authentification, et si le user a le role ADMIN, il peut ajouter, editer, supprimer des patients
 
-<img src="images/USER.png">
-alors pour un utilisateur avec le role USER, il peut que consulter les patients
+<img src="images/UserPage.png">
+alors pour un utilisateur avec le role USER, il ne peut que consulter les patients.
 </p>
 </div>
 
