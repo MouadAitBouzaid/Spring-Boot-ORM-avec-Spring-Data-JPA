@@ -47,7 +47,7 @@ public class PatientController {
         return "home";
     }
 
-    @GetMapping("/user/patient")
+    @GetMapping("/user/patiens")
     @ResponseBody
     public List<Patient> listPatient(){
         return patientRepositorie.findAll();
