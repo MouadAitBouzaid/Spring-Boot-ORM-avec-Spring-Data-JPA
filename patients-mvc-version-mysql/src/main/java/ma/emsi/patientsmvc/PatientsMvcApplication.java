@@ -42,19 +42,21 @@ public class PatientsMvcApplication {
         return new BCryptPasswordEncoder();
     }
     //@Bean
-    CommandLineRunner saveUser(SecurityService securityService){
+    CommandLineRunner saveUsers(SecurityService securityService){
         return  args -> {
-            securityService.saveUser("Mouad","1234","1234");
-            securityService.saveUser("chaimae","1234","1234");
-            securityService.saveUser("salah","1234","1234");
+            securityService.saveNewUser("Mouad","1234","1234");
+            securityService.saveNewUser("chaimae","1234","1234");
+            securityService.saveNewUser("salah","1234","1234");
 
-            securityService.saveRole("user","");
-            securityService.saveRole("ADMIN","");
+            securityService.saveNewRole("USER","");
+            securityService.saveNewRole("ADMIN","");
 
             securityService.addRoleToUser("Mouad", "ADMIN");
-            securityService.addRoleToUser("Mouad", "user");
-            securityService.addRoleToUser("chaimae", "user");
-            securityService.addRoleToUser("salah", "user");
+            securityService.addRoleToUser("chaimae", "USER");
+            securityService.addRoleToUser("salah", "USER");
+            securityService.addRoleToUser("Mouad", "USER");
+
+
 
         };
     }

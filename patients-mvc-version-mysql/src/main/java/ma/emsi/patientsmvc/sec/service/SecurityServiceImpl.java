@@ -1,7 +1,7 @@
 package ma.emsi.patientsmvc.sec.service;
 
-import groovy.util.logging.Slf4j;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import ma.emsi.patientsmvc.sec.entities.AppRole;
 import ma.emsi.patientsmvc.sec.entities.AppUser;
 import ma.emsi.patientsmvc.sec.repositories.AppRoleRepository;
@@ -21,46 +21,45 @@ public class SecurityServiceImpl implements SecurityService {
     private AppRoleRepository appRoleRepository;
     private PasswordEncoder passwordEncoder;
 
-
     @Override
-    public AppUser saveUser(String username, String password, String rePassword) {
-        if(!password.equals(rePassword)) throw new RuntimeException("Password not match");
-        String hashedPWD=passwordEncoder.encode((password));
-        AppUser appUSer=new  AppUser();
-        appUSer.setUserId(UUID.randomUUID().toString());
-        appUSer.setUsername(username);
-        appUSer.setPassword(hashedPWD);
-        appUSer.setActive(true);
-        AppUser savedAppUser=appUserRepository.save(appUSer);
+    public AppUser saveNewUser(String username, String password, String rePassword) {
+        if(!password.equals(rePassword)) throw new RuntimeException("Password does not match");
+        String hashedPWD = passwordEncoder.encode(password);
+        AppUser appUser = new AppUser();
+        appUser.setUserId(UUID.randomUUID().toString()); // Génerer des identifiants en se référant à la date systeme
+        appUser.setUsername(username);
+        appUser.setPassword(hashedPWD);
+        appUser.setActive(true);
+        AppUser savedAppUser = appUserRepository.save(appUser);
         return savedAppUser;
     }
 
     @Override
-    public AppRole saveRole(String roleName, String description) {
+    public AppRole saveNewRole(String roleName, String description) {
         AppRole appRole = appRoleRepository.findByRoleName(roleName);
-        if(appRole!=null) throw new RuntimeException("Role"+roleName+"Already exist");
-        appRole= new AppRole();
+        if (appRole != null) throw new RuntimeException("Role " +roleName+ " already exists.");
+        appRole = new AppRole();
         appRole.setRoleName(roleName);
         appRole.setDescription(description);
-        AppRole savedAppRole =appRoleRepository.save(appRole);
+        AppRole savedAppRole = appRoleRepository.save(appRole);
         return savedAppRole;
     }
-    @Transactional
+
     @Override
     public void addRoleToUser(String username, String roleName) {
-        AppUser appUser=appUserRepository.findByUsername(username);
-        if(appUser!=null) throw new RuntimeException("User not found");
-        AppRole appRole=appRoleRepository.findByRoleName(roleName);
-        if(appRole!=null) throw new RuntimeException("Role not found");
+        AppUser appUser = appUserRepository.findByUsername(username);
+        if (appUser == null) throw new RuntimeException("User not found.");
+        AppRole appRole = appRoleRepository.findByRoleName(roleName);
+        if (appRole == null) throw new RuntimeException("Role not found.");
         appUser.getAppRoles().add(appRole);
     }
 
     @Override
-    public void removeRoleFromUser(String username, String roleName) {
-        AppUser appUser=appUserRepository.findByUsername(username);
-        if(appUser!=null) throw new RuntimeException("User not found");
-        AppRole appRole=appRoleRepository.findByRoleName(roleName);
-        if(appRole!=null) throw new RuntimeException("Role not found");
+    public void removeRoleToUser(String username, String roleName) {
+        AppUser appUser = appUserRepository.findByUsername(username);
+        if (appUser == null) throw new RuntimeException("User not found.");
+        AppRole appRole = appRoleRepository.findByRoleName(roleName);
+        if (appRole == null) throw new RuntimeException("Role not found.");
         appUser.getAppRoles().remove(appRole);
     }
 
